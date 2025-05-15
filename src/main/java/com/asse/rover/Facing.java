@@ -22,6 +22,15 @@ public enum Facing {
         throw new IllegalArgumentException("Invalid value: " + value);
     }
 
+    public static Facing fromString(String str) {
+        for (Facing facing : values()) {
+            if (facing.name().equalsIgnoreCase(str)) {
+                return facing;
+            }
+        }
+        throw new IllegalArgumentException("Invalid string: " + str);
+    }
+
     public Facing turnLeft() {
         return fromValue((this.value + 3) % 4);
     }

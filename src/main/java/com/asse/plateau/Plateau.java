@@ -16,9 +16,9 @@ public class Plateau {
     @EqualsAndHashCode.Exclude
     private final int height;
     @EqualsAndHashCode.Exclude
-    private final List<Obstacle> obstacles = new ArrayList<>();
+    private List<Obstacle> obstacles = new ArrayList<>();
     @EqualsAndHashCode.Exclude
-    private final List<Rover> rovers = new ArrayList<>();
+    private List<Rover> rovers = new ArrayList<>();
 
     public Plateau(String name, int width, int height) {
         this.name = name;

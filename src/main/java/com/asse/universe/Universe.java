@@ -1,20 +1,19 @@
 package com.asse.universe;
 
 import com.asse.plateau.Plateau;
+import com.asse.rover.Rover;
 import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
 public class Universe {
-    private List<Plateau> plateaus = new ArrayList<>();
+    private final List<Plateau> plateaus;
+    private final List<Rover> rovers;
 
-    public void addPlateau(Plateau plateau) {
-        if (plateaus.contains(plateau)) {
-            throw new IllegalArgumentException("Plateau already registered");
-        }
-        plateaus.add(plateau);
+    public Universe(List<Plateau> plateaus, List<Rover> rovers) {
+        this.plateaus = plateaus;
+        this.rovers = rovers;
     }
 
     public Plateau getPlateau(String name) {
