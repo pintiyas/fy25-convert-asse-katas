@@ -3,14 +3,20 @@ package com.asse.rover;
 import com.asse.plateau.Plateau;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
 @AllArgsConstructor
 public class Rover {
 
+    String id;
+    @EqualsAndHashCode.Exclude
     Plateau plateau;
+    @EqualsAndHashCode.Exclude
     int x;
+    @EqualsAndHashCode.Exclude
     int y;
+    @EqualsAndHashCode.Exclude
     Facing facing;
 
     private Rover() {

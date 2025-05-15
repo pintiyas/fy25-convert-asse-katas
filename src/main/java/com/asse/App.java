@@ -2,7 +2,6 @@ package com.asse;
 
 import com.asse.commands.Command;
 import com.asse.commands.ExtendedMovementCommand;
-import com.asse.commands.MovementCommand;
 import com.asse.plateau.Plateau;
 import com.asse.rover.Facing;
 import com.asse.rover.Rover;
@@ -37,7 +36,13 @@ public class App {
             }
         }
 
-        Rover rover = new Rover(plateau, 0, 0, Facing.N);
+        Rover rover = new Rover("1", plateau, 0, 0, Facing.N);
+
+        try {
+            plateau.registerRover(rover);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error adding rover: " + e.getMessage());
+        }
 
         while (true) {
             System.out.println("Enter command: ");

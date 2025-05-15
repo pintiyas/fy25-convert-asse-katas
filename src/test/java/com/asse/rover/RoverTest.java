@@ -5,7 +5,10 @@ import com.asse.plateau.PlateauMother;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static com.asse.rover.RoverMother.createRoverWithPosition;
+import static com.asse.rover.RoverMother.createRoverWithPositionAndPlateauWithObstacle;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotEquals;
 
 @Test
 public class RoverTest {
@@ -19,14 +22,14 @@ public class RoverTest {
     @DataProvider(name = "advanceDataProvider")
     public static Object[][] advanceDataProvider() {
         return new Object[][]{
-                {new Rover(PlateauMother.createPlateau(), 0, 0, Facing.N), "0:1:N"},
-                {new Rover(PlateauMother.createPlateau(), 0, 0, Facing.E), "1:0:E"},
-                {new Rover(PlateauMother.createPlateau(), 0, 0, Facing.S), "0:9:S"},
-                {new Rover(PlateauMother.createPlateau(), 0, 0, Facing.W), "9:0:W"},
-                {new Rover(PlateauMother.createPlateau(), 9, 9, Facing.N), "9:0:N"},
-                {new Rover(PlateauMother.createPlateau(), 9, 9, Facing.E), "0:9:E"},
-                {new Rover(PlateauMother.createPlateau(), 9, 9, Facing.S), "9:8:S"},
-                {new Rover(PlateauMother.createPlateau(), 9, 9, Facing.W), "8:9:W"}
+                {createRoverWithPosition(0, 0, Facing.N), "0:1:N"},
+                {createRoverWithPosition(0, 0, Facing.E), "1:0:E"},
+                {createRoverWithPosition(0, 0, Facing.S), "0:9:S"},
+                {createRoverWithPosition(0, 0, Facing.W), "9:0:W"},
+                {createRoverWithPosition(9, 9, Facing.N), "9:0:N"},
+                {createRoverWithPosition(9, 9, Facing.E), "0:9:E"},
+                {createRoverWithPosition(9, 9, Facing.S), "9:8:S"},
+                {createRoverWithPosition(9, 9, Facing.W), "8:9:W"},
         };
     }
 
@@ -39,10 +42,10 @@ public class RoverTest {
     @DataProvider(name = "rotateLeftDataProvider")
     public static Object[][] rotateLeftDataProvider() {
         return new Object[][]{
-                {new Rover(PlateauMother.createPlateau(), 0, 0, Facing.N), "0:0:W"},
-                {new Rover(PlateauMother.createPlateau(), 0, 0, Facing.E), "0:0:N"},
-                {new Rover(PlateauMother.createPlateau(), 0, 0, Facing.S), "0:0:E"},
-                {new Rover(PlateauMother.createPlateau(), 0, 0, Facing.W), "0:0:S"}
+                {createRoverWithPosition(0, 0, Facing.N), "0:0:W"},
+                {createRoverWithPosition(0, 0, Facing.E), "0:0:N"},
+                {createRoverWithPosition(0, 0, Facing.S), "0:0:E"},
+                {createRoverWithPosition(0, 0, Facing.W), "0:0:S"}
         };
     }
 
@@ -55,21 +58,37 @@ public class RoverTest {
     @DataProvider(name = "rotateRightDataProvider")
     public static Object[][] rotateRightDataProvider() {
         return new Object[][]{
-                {new Rover(PlateauMother.createPlateau(), 0, 0, Facing.N), "0:0:E"},
-                {new Rover(PlateauMother.createPlateau(), 0, 0, Facing.E), "0:0:S"},
-                {new Rover(PlateauMother.createPlateau(), 0, 0, Facing.S), "0:0:W"},
-                {new Rover(PlateauMother.createPlateau(), 0, 0, Facing.W), "0:0:N"}
+                {createRoverWithPosition(0, 0, Facing.N), "0:0:E"},
+                {createRoverWithPosition(0, 0, Facing.E), "0:0:S"},
+                {createRoverWithPosition(0, 0, Facing.S), "0:0:W"},
+                {createRoverWithPosition(0, 0, Facing.W), "0:0:N"}
         };
     }
 
-    @Test()
+    @Test
     public void testAdvanceWithObstacle() {
-        Rover rover = new Rover(PlateauMother.createPlateauWithObstacle(0, 1), 0, 0, Facing.N);
+        Rover rover = createRoverWithPositionAndPlateauWithObstacle(0, 0, Facing.N, 0, 1);
         try {
             rover.advance();
         } catch (ObstacleException e) {
             assertEquals(rover.getPosition(), "0:0:N");
             assertEquals(e.getObstacleInformation(), "O:0:0:N");
         }
+    }
+
+    @Test
+    public void testEqualsRover() {
+        Rover rover1 = new Rover("1", PlateauMother.createPlateau(), 0, 0, Facing.N);
+        Rover rover2 = new Rover("1", PlateauMother.createPlateau(), 0, 0, Facing.N);
+        assertEquals(rover1, rover2);
+        Rover rover3 = new Rover("1", PlateauMother.createPlateau(), 1, 1, Facing.E);
+        assertEquals(rover1, rover3);
+    }
+
+    @Test
+    public void testNotEqualsRover() {
+        Rover rover1 = new Rover("1", PlateauMother.createPlateau(), 0, 0, Facing.N);
+        Rover rover2 = new Rover("2", PlateauMother.createPlateau(), 0, 0, Facing.N);
+        assertNotEquals(rover1, rover2);
     }
 }
