@@ -78,17 +78,17 @@ public class RoverTest {
 
     @Test
     public void testEqualsRover() {
-        Rover rover1 = new Rover("1", PlateauMother.createPlateau(), 0, 0, Facing.N);
-        Rover rover2 = new Rover("1", PlateauMother.createPlateau(), 0, 0, Facing.N);
+        Rover rover1 = new Rover("1", PlateauMother.createDefaultPlateau(), 0, 0, Facing.N);
+        Rover rover2 = new Rover("1", PlateauMother.createDefaultPlateau(), 0, 0, Facing.N);
         assertEquals(rover1, rover2);
-        Rover rover3 = new Rover("1", PlateauMother.createPlateau(), 1, 1, Facing.E);
+        Rover rover3 = new Rover("1", PlateauMother.createDefaultPlateau(), 1, 1, Facing.E);
         assertEquals(rover1, rover3);
     }
 
     @Test
     public void testNotEqualsRover() {
-        Rover rover1 = new Rover("1", PlateauMother.createPlateau(), 0, 0, Facing.N);
-        Rover rover2 = new Rover("2", PlateauMother.createPlateau(), 0, 0, Facing.N);
+        Rover rover1 = new Rover("1", PlateauMother.createDefaultPlateau(), 0, 0, Facing.N);
+        Rover rover2 = new Rover("2", PlateauMother.createDefaultPlateau(), 0, 0, Facing.N);
         assertNotEquals(rover1, rover2);
     }
 }

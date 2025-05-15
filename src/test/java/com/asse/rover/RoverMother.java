@@ -6,15 +6,15 @@ import com.asse.plateau.PlateauMother;
 public class RoverMother {
 
     public static Rover createDefaultRover() {
-        return new Rover("1", PlateauMother.createPlateau(), 0, 0, Facing.N);
+        return new Rover("1", PlateauMother.createDefaultPlateau(), 0, 0, Facing.N);
     }
 
     public static Rover createDefaultRover(String id) {
-        return new Rover(id, PlateauMother.createPlateau(), 0, 0, Facing.N);
+        return new Rover(id, PlateauMother.createDefaultPlateau(), 0, 0, Facing.N);
     }
 
     public static Rover createRoverWithPosition(int x, int y, Facing facing) {
-        return new Rover("1", PlateauMother.createPlateau(), x, y, facing);
+        return new Rover("1", PlateauMother.createDefaultPlateau(), x, y, facing);
     }
 
     public static Rover createRoverWithPositionAndPlateauWithObstacle(int x, int y, Facing facing, int obstacleX, int obstacleY) {

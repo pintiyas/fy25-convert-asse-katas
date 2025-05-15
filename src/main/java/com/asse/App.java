@@ -18,7 +18,7 @@ public class App {
         String[] size = plateauSize.split(":");
         int width = Integer.parseInt(size[0]);
         int height = Integer.parseInt(size[1]);
-        Plateau plateau = new Plateau(width, height);
+        Plateau plateau = new Plateau("Mars", width, height);
 
 
         System.out.println("Enter the number of obstacles:");

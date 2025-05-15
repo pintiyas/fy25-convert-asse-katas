@@ -38,7 +38,7 @@ public class MovementCommandTest {
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testInvalidCommand() {
-        Rover rover = new Rover("1", PlateauMother.createPlateau(), 0, 0, Facing.N);
+        Rover rover = new Rover("1", PlateauMother.createDefaultPlateau(), 0, 0, Facing.N);
         new MovementCommand(rover, "X");
     }
 }

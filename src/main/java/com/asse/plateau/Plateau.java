@@ -9,12 +9,14 @@ import java.util.Optional;
 
 @Data
 public class Plateau {
+    private final String name;
     private final int width;
     private final int height;
     private final List<Obstacle> obstacles = new ArrayList<>();
     private final List<Rover> rovers = new ArrayList<>();
 
-    public Plateau(int width, int height) {
+    public Plateau(String name, int width, int height) {
+        this.name = name;
         this.width = width;
         this.height = height;
     }
