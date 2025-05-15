@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 public class UniverseInit {
 
     public static Universe bigBang() {
-
         // Initialize the universe with plateaus and rovers
         List<Plateau> plateaus = new PlateauReader().readPlateaus();
         List<RoverDTO> roverDTOS = new RoverReader().readRovers();

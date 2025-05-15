@@ -15,6 +15,12 @@ public class App {
 
         Universe universe = UniverseInit.bigBang();
 
+        universe.getPlateaus().stream()
+                .forEach(plateau -> {
+                    System.out.println("Plateau: " + plateau.getName());
+                    plateau.toMap();
+                });
+
         while (true) {
             System.out.println("Select plateau to operate:");
             universe.getPlateaus().stream()

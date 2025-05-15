@@ -59,7 +59,7 @@ public class Plateau {
             throw new IllegalArgumentException("Rover already registered");
         }
         if (isObstacle(rover.getX(), rover.getY())) {
-            throw new IllegalArgumentException("Rover coordinates are on an obstacle");
+            throw new IllegalArgumentException("Rover coordinates are on an obstacle: " + rover.getId() + " " + rover.getX() + ":" + rover.getY());
         }
         rovers.add(rover);
     }

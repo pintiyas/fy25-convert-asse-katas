@@ -2,55 +2,43 @@
   {
     "id": "rover1",
     "plateau": "Mars",
-    "position": {
-      "x": 1,
-      "y": 2
-    },
+    "x": 1,
+    "y": 3,
     "facing": "N"
   },
   {
     "id": "rover2",
     "plateau": "Venus",
-    "position": {
-      "x": 5,
-      "y": 5
-    },
+    "x": 5,
+    "y": 6,
     "facing": "E"
   },
   {
     "id": "rover3",
     "plateau": "Jupiter",
-    "position": {
-      "x": 10,
-      "y": 10
-    },
+    "x": 0,
+    "y": 10,
     "facing": "S"
   },
   {
     "id": "rover4",
     "plateau": "Mars",
-    "position": {
-      "x": 3,
-      "y": 4
-    },
+    "x": 4,
+    "y": 3,
     "facing": "W"
   },
   {
     "id": "rover5",
     "plateau": "Venus",
-    "position": {
-      "x": 7,
-      "y": 8
-    },
+    "x": 8,
+    "y": 8,
     "facing": "N"
   },
   {
     "id": "rover6",
     "plateau": "Jupiter",
-    "position": {
-      "x": 12,
-      "y": 14
-    },
+    "x": 10,
+    "y": 14,
     "facing": "E"
   }
 ]
