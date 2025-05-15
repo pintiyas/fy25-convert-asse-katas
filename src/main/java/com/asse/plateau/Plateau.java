@@ -2,6 +2,7 @@ package com.asse.plateau;
 
 import com.asse.rover.Rover;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +11,13 @@ import java.util.Optional;
 @Data
 public class Plateau {
     private final String name;
+    @EqualsAndHashCode.Exclude
     private final int width;
+    @EqualsAndHashCode.Exclude
     private final int height;
+    @EqualsAndHashCode.Exclude
     private final List<Obstacle> obstacles = new ArrayList<>();
+    @EqualsAndHashCode.Exclude
     private final List<Rover> rovers = new ArrayList<>();
 
     public Plateau(String name, int width, int height) {
@@ -33,6 +38,13 @@ public class Plateau {
                 .filter(rover -> rover.getX() == x && rover.getY() == y)
                 .findFirst();
         return first.isPresent();
+    }
+
+    public Rover getRover(String id) {
+        return rovers.stream()
+                .filter(rover -> rover.getId().equalsIgnoreCase(id))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Rover not found"));
     }
 
     public void registerObstacle(int x, int y) throws IllegalArgumentException{
