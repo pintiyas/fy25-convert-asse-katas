@@ -1,5 +1,7 @@
 package com.asse;
 
+import com.asse.commands.Command;
+import com.asse.commands.ExtendedMovementCommand;
 import com.asse.commands.MovementCommand;
 import com.asse.plateau.Plateau;
 import com.asse.rover.Facing;
@@ -48,7 +50,7 @@ public class App {
                 continue;
             }
             try {
-                MovementCommand movementCommand = new MovementCommand(rover, command);
+                Command movementCommand = new ExtendedMovementCommand(rover, command);
                 String result = movementCommand.execute();
                 System.out.println("Result: " + result);
             } catch (IllegalArgumentException e) {
